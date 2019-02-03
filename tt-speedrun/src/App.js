@@ -5,12 +5,31 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      board: Array(9).fill(null)
+      board: Array(9).fill(null),
+      player: 'X'
     }
   }
 
-  handleClick (e) {
-    console.log(e.target);
+  checkWinner() {
+   let winL = 
+    [
+      ["0","1","2"],
+      ["3","4","5"],
+      ["6","7","8"],
+    ]
+  }
+
+  handleClick (i) {
+    if(this.state.board[i] === null) {
+    let newBoard = this.state.board;
+    newBoard[i] = this.state.player;
+    let newPlayer = this.state.player === 'X' ? 'O' : 'X'
+    this.setState({
+      board: newBoard,
+      player: newPlayer
+    })
+  }
+  this.checkWinner()
   }
 
   render() {
@@ -19,7 +38,7 @@ class App extends Component {
     (box,i) =>
     <div key={i} 
     className="box" 
-    onClick={(e) => this.handleClick(e)}>
+    onClick={() => this.handleClick(i)}>
     {box}
     </div>)
 
