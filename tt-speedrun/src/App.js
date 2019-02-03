@@ -6,10 +6,15 @@ class App extends Component {
     super(props);
     this.state = {
       board: Array(9).fill(null),
-      player: 'X'
+      player: 'X',
+      winner: null
     }
   }
-
+  endGame() {
+    this.setState({
+      board: Array(9).fill(null)
+    })
+  }
   checkWinner() {
    let winL = 
     [
@@ -29,10 +34,15 @@ class App extends Component {
       if((this.state.board[a])) {
         
         if(this.state.board[a] === this.state.board[b] && this.state.board[a] === this.state.board[c]) {
-          console.log('winner is', this.state.player)
+          this.setState({
+            winner: this.state.player
+          })
         
       }
       }
+    }
+    if(this.state.winner) {
+      this.endGame()
     }
   }
 
