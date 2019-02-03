@@ -16,7 +16,24 @@ class App extends Component {
       ["0","1","2"],
       ["3","4","5"],
       ["6","7","8"],
+      ["0","3","6"],
+      ["1","4","7"],
+      ["2","5","8"],
+      ["0","4","8"],
+      ["2","4","6"],
     ]
+
+    for (let i = 0; i < winL.length; i++) {
+      const [a,b,c] = winL[i];
+
+      if((this.state.board[a])) {
+        
+        if(this.state.board[a] === this.state.board[b] && this.state.board[a] === this.state.board[c]) {
+          console.log('winner is', this.state.player)
+        
+      }
+      }
+    }
   }
 
   handleClick (i) {
